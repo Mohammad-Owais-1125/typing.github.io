@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typing Speed Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Simple styling for the new sections */
+    section.card { margin-bottom: 40px; }
+    nav.page-nav { display:flex; gap:15px; margin-bottom:20px; }
+    nav.page-nav a { text-decoration:none; color:#2563eb; font-weight:600; }
+    section.page-section { padding:20px; background:#f8f9fa; border-radius:12px; margin-top:30px; }
+    section.page-section h2 { margin-bottom:12px; }
+    section.page-section p { margin-bottom:8px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <a href="index.html">
+      <div class="logo">⌨️</div></a>
+      <h1>Typing Speed Test</h1>
+    </div>
+    <div class="actions">
+      <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme">🌗</button>
+      <button id="resetBtn" class="btn btn-outline">Restart</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Typing Test Section -->
+    <section id="typingTest" class="card">
+      <div class="card-header">
+        <div class="select-row">
+
+          <!-- Duration -->
+          <label for="duration" class="label">Duration</label>
+          <select id="duration" class="select">
+            <option value="15">15s</option>
+            <option value="30" selected>30s</option>
+            <option value="60">60s</option>
+            <option value="custom">Custom</option>
+          </select>
+
+          <input
+            id="customDuration"
+            type="number"
+            class="select"
+            placeholder="Seconds"
+            style="width:120px; display:none;"
+            min="5"
+          />
+
+          <!-- Difficulty -->
+          <label for="difficulty" class="label">Difficulty</label>
+          <select id="difficulty" class="select">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+
+          <!-- Endless mode -->
+          <label class="label">
+            <input type="checkbox" id="endlessMode" />
+            Endless Mode
+          </label>
+
+          <button id="newTextBtn" class="btn btn-primary">New text</button>
+        </div>
+
+        <div class="timer">
+          <span class="label">Time left:</span>
+          <span id="timeLeft">30</span>s
+        </div>
+      </div>
+
+      <div id="textBox" class="text-box" aria-label="Text to type"></div>
+
+      <div class="input-row">
+        <input
+          id="typingInput"
+          type="text"
+          class="typing-input"
+          placeholder="Start typing here..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="none"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="progress-row">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div class="small-stats">
+          <span id="charCount">0 / 0 chars</span>
+          <span id="errorCount">Errors: 0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="card results-card">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-title">WPM</div>
+          <div id="wpm" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title">Accuracy</div>
+          <div id="accuracy" class="stat-value">100%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title">Characters</div>
+          <div id="charsStat" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title">Errors</div>
+          <div id="errorsStat" class="stat-value">0</div>
+        </div>
+      </div>
+      <div class="history">
+        <div class="history-header">
+          <div class="label">Last results</div>
+          <button id="clearHistoryBtn" class="btn btn-ghost">Clear</button>
+        </div>
+        <ul id="historyList" class="history-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <div>Made for focused practice — switch difficulty, set a timer, and type away.</div><br>
+      <a href="index.html">Typing Test</a> |
+      <a href="about.html">About</a> |
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
